@@ -23,6 +23,13 @@ body.intro-active { overflow: hidden; }
 #intro-overlay.done  { pointer-events: none; visibility: hidden; }
 
 /* ---- Words container — centered ---- */
+.intro-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .intro-words {
   display: flex;
   align-items: center;
@@ -43,17 +50,43 @@ body.intro-active { overflow: hidden; }
   opacity: 0;
 }
 
-/* Words start slightly below and invisible */
-.intro-word--left, .intro-word--right {
-  transform: translateY(50px);
+/* RPG — starts far left off screen */
+.intro-word--left {
+  transform: translateX(-100vw);
   transition:
-    transform 3s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity   2s ease;
+    transform 4s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity   0.4s ease;
 }
 
-/* Both slide UP to center */
+/* CATERING — starts far right off screen */
+.intro-word--right {
+  transform: translateX(100vw);
+  transition:
+    transform 4s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity   0.4s ease;
+}
+
+/* Both slide to center and meet */
 #intro-overlay.words-in .intro-word--left,
 #intro-overlay.words-in .intro-word--right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Event Management Subtitle */
+.intro-subword {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  color: #a0978b;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.5s ease 2s, transform 1.5s ease 2s; /* Fade in nicely after the main words are sliding in */
+}
+
+#intro-overlay.words-in .intro-subword {
   opacity: 1;
   transform: translateY(0);
 }
