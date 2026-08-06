@@ -1,0 +1,29 @@
+{
+  "name": "rkg-wedding-planner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thefreelancers2026-arch/RJB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/thefreelancers2026-arch/RJB/issues"
+  },
+  "homepage": "https://github.com/thefreelancers2026-arch/RJB#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "multer": "^2.2.0",
+    "sqlite3": "^6.0.1"
+  }
+}

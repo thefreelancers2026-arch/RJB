@@ -59,17 +59,31 @@ window.scrollTo(0, 0);
   const overlay = document.getElementById('intro-overlay');
   if (!overlay) return;
 
-  // Step 1 — Start words sliding from left & right
-  setTimeout(() => {
-    overlay.classList.add('words-in');
-  }, 80);
+  const counter = document.getElementById('introCounter');
+  const progress = document.getElementById('introProgress');
+  if (counter && progress) {
+    let count = 0;
+    const duration = 2500; // 2.5 seconds to reach 100%
+    const intervalTime = duration / 100;
+    
+    const interval = setInterval(() => {
+      count++;
+      counter.innerText = count + ' %';
+      progress.style.width = count + '%';
+      if (count >= 100) {
+        clearInterval(interval);
+        setTimeout(() => {
+          overlay.classList.add('lift');
+        }, 500); // Pause at 100% before swipe
+      }
+    }, intervalTime);
+  } else {
+    setTimeout(() => {
+      overlay.classList.add('lift');
+    }, 1500);
+  }
 
-  // Step 2 — Page swipe UP after 5s slide finishes + 400ms pause
-  setTimeout(() => {
-    overlay.classList.add('lift');
-  }, 5500);
-
-  // Step 3 — Hide overlay + unlock scroll after swipe completes (720ms swipe)
+  // Hide overlay + unlock scroll after swipe completes (720ms swipe)
   overlay.addEventListener('transitionend', function handler(e) {
     if (e.propertyName !== 'transform') return;
     overlay.classList.add('done');
